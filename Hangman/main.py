@@ -11,8 +11,8 @@ def draw(false):
             drawing = file.read()
     except FileNotFoundError:
         drawing = """    
-                          
-                          
+                           
+                           
                            
                            
                        """
