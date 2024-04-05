@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-
+import time
 
 class Tasks():
 
@@ -25,8 +25,11 @@ class Tasks():
 
         if os.path.exists(self.output_path):
             df.to_csv(self.output_path, mode='a', header=False, index=False)
+            
         else:
             df.to_csv(self.output_path, mode='w', header=True, index=False)
+        print("Successfuly created a new task")
+        time.sleep(2)
 
     def show_tasks(self, filter):
         try:
@@ -52,13 +55,19 @@ class Tasks():
             if position.lower() == "name":
                 df.loc[[int(id)], "Name"] = text
                 df.to_csv(self.output_path,mode="w", header=True, index=False)
+                print("Successfuly edited task")
+                time.sleep(2)
             elif position.lower() == "description":
                 df.loc[[int(id)], "Description"] = text
                 df.to_csv(self.output_path,mode="w", header=True, index=False)
+                print("Successfuly edited task")
+                time.sleep(2)
             elif position.lower() == "status":
                 s = {"1" : "Not Assigned", "2" : "In Progress", "3" : "Finished"}
                 df.loc[[int(id)], "Status"] = s[text]
                 df.to_csv(self.output_path,mode="w", header=True, index=False)
+                print("Successfuly changed status")
+                time.sleep(2)
             else : 
                 "Not a valid parameter. Try Again"
         except ValueError:
@@ -67,8 +76,9 @@ class Tasks():
 
     def delete_task(self, id):
         df = pd.read_csv("output.csv", sep=",")
-        print("Are you sure you want to delete this line ?")
-        print(df.loc[[int(id)]])
-        df.drop([int(id)])
-        df.to_csv(self.output_path,mode="w", header=True, index=False)
-        pass
+        if input("Are you sure you want to delete this line ?").lower() == "yes":
+            df.drop(int(id), axis=0, inplace=True)
+            df.to_csv(self.output_path,mode="w", header=True, index=False)
+            print("Successfuly deleted task")
+            time.sleep(2)
+            
