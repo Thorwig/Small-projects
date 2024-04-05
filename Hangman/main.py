@@ -1,4 +1,5 @@
 from random_word import RandomWords
+import os
 
 word = RandomWords().get_random_word()
 guess = ["_"]*len(word)
@@ -20,6 +21,7 @@ def draw(false):
 
 
 for _ in range(100):
+    os.system("clear")
     print(f'{" ".join(guess)}                     uncorrect letters: {false}')
     print(draw(len(false)))
     if word == "".join(guess):
