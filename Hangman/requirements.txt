@@ -1,1 +1,2 @@
 random-word
+python-randomword-fr
