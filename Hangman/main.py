@@ -1,6 +1,7 @@
 from random_word import RandomWords
 from randomwordfr import RandomWordFr
 import os
+from unidecode import unidecode
 
 
 def draw(false):
@@ -29,7 +30,7 @@ def english(word, guess):
             break
         letter = input("Enter a letter: ")
         IN = False
-        for index, value in enumerate(word):
+        for index, value in enumerate(unidecode(word)):
             if letter == value:
                 guess[index] = letter
                 IN = True
@@ -45,14 +46,15 @@ def french(word, definition, guess):
         print(draw(len(false)))
         if word == "".join(guess):
             print("Félicitations! Vous avez gagné 🎉")
+            print(f"Définition: {definition}")
             exit()
         if len(false) == 9:
             break
         letter = input("Entrez une lettre: ")
         IN = False
         for index, value in enumerate(word):
-            if letter == value:
-                guess[index] = letter
+            if letter == unidecode(value):
+                guess[index] = value
                 IN = True
         if IN is False and letter not in false:
             false.append(letter)

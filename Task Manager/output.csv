@@ -1,6 +1,7 @@
 Name,Status,Description
-Do this,Not Assigned,you need to do this
-Do that,Not Assigned,you need to do that
-don't do this,In Progress,you mustn't do this
-don't do that,Not Assigned,you mustn't do that
-to del,Not Assigned,to delete
+Production deploy Baches,Not Assigned,
+ Train model for partial absence of lines ,In Progress,
+ Training Documentation ,In Progress,
+ New Stats for available countries [I] ,Not Assigned,Waiting for stats
+ New Stats for available countries [II] ,Not Assigned,Waiting for stats
+ Result Analysis per country ,Not Assigned,Waiting for stats
