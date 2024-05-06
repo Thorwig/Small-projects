@@ -28,7 +28,10 @@ def english(word, guess):
             exit()
         if len(false) == 9:
             break
-        letter = input("Enter a letter: ")
+        letter = input("Enter a letter: ").lower()
+        if not letter.isalpha():
+            print("Enter a valid letter")
+            continue
         IN = False
         for index, value in enumerate(unidecode(word)):
             if letter == value:
@@ -50,7 +53,10 @@ def french(word, definition, guess):
             exit()
         if len(false) == 9:
             break
-        letter = input("Entrez une lettre: ")
+        letter = input("Entrez une lettre: ").lower()
+        if not letter.isalpha():
+            print("Veuillez entrer une lettre")
+            continue
         IN = False
         for index, value in enumerate(word):
             if letter == unidecode(value):
@@ -69,10 +75,24 @@ match input("Select a language\n 1. English\n 2. French\n"):
     case "1":
         word = RandomWords().get_random_word()
         guess = ["_"]*len(word)
+        for index, value in enumerate(word):
+            if value == " ":
+                guess[index] = " "
+            elif value == "-":
+                guess[index] = "-"
+            elif value == "'":
+                guess[index] = "'"
         english(word, guess)
     case "2":
         p = RandomWordFr().get()
         word = p["word"].lower()
         definition = p["definition"]
         guess = ["_"]*len(word)
+        for index, value in enumerate(word):
+            if value == " ":
+                guess[index] = " "
+            elif value == "-":
+                guess[index] = "-"
+            elif value == "'":
+                guess[index] = "'"
         french(word, definition, guess)
