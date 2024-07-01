@@ -26,7 +26,7 @@ def english(word, guess):
         if word == "".join(guess):
             print("Congrats! You win 🎉")
             exit()
-        if len(false) == 9:
+        if len(false) == 10:
             break
         letter = input("Enter a letter: ").lower()
         if not letter.isalpha():
@@ -51,7 +51,7 @@ def french(word, definition, guess):
             print("Félicitations! Vous avez gagné 🎉")
             print(f"Définition: {definition}")
             exit()
-        if len(false) == 9:
+        if len(false) == 10:
             break
         letter = input("Entrez une lettre: ").lower()
         if not letter.isalpha():
